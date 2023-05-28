@@ -1,0 +1,19 @@
+# https://mskyda.medium.com/host-a-website-on-github-pages-from-a-private-repo-step-by-step-guide-7fd82b6ae65f
+# https://github.com/s0/git-publish-subdir-action
+name: My publish action
+on:
+    push:
+        branches:
+        - main
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+        - name: git
+          uses: s0/git-publish-subdir-action@develop
+          env:
+            REPO: https://github.com/palzwoi/palzwoi.github.io
+            BRANCH: main
+            FOLDER: dist
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            TARGET_DIR: cube
