@@ -1,6 +1,7 @@
 # https://mskyda.medium.com/host-a-website-on-github-pages-from-a-private-repo-step-by-step-guide-7fd82b6ae65f
 # https://github.com/s0/git-publish-subdir-action
-name: My publish action
+# https://github.com/cpina/github-action-push-to-another-repository
+name: Publish to palzwoi ghpages
 on:
     push:
         branches:
@@ -9,11 +10,14 @@ jobs:
     deploy:
         runs-on: ubuntu-latest
         steps:
-        - name: git
-          uses: s0/git-publish-subdir-action@develop
+        - uses: actions/checkout@v2
+        - name: Push to ghpages repo
+          uses: cpina/github-action-push-to-another-repository@main
           env:
-            REPO: https://github.com/palzwoi/palzwoi.github.io
-            BRANCH: main
-            FOLDER: dist
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            TARGET_DIR: cube
+            SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+          with:
+            source-directory: 'dist'
+            destination-github-username: 'palzwoi'
+            destination-repository-name: 'palzwoi.github.io'
+            target-directory: '/cube'
+            user-email: 'palzwoi@deploy.action.github.com'
