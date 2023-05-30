@@ -3,6 +3,7 @@ import './style.css'
 import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
+import { setupThree } from './three.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -19,8 +20,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <p class="read-the-docs">
       Click on the Vite and TypeScript logos to learn more
     </p>
-    <p>Test paragraph added</p>
+    <p>Test paragraph added</p>    
   </div>
 `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+setupThree(document.querySelector<HTMLCanvasElement>('#three-canvas')!)
