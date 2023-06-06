@@ -12,8 +12,8 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                 cache: yarn
-            - run: yarn install
-            - run: yarn build
+            - run: yarn install --frozen-lockfile
+            - run: yarn build-ghpages
             - uses: actions/upload-pages-artifact@v1
               with:
                 path: ./dist
