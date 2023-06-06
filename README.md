@@ -1,2 +1,2 @@
 # cube
-simple three.js cube
+Simple three.js cube

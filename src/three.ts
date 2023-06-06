@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
-export function setupThree(canvas: HTMLCanvasElement) {
+export function setupThree(parent: HTMLElement) {
     console.log("Guten Tag");
 
     const scene = new THREE.Scene()
@@ -12,9 +12,12 @@ export function setupThree(canvas: HTMLCanvasElement) {
         1000
     )
     camera.position.z = 3;
+    camera.position.x = 2;
+    camera.position.y = 1;
+    
     const renderer = new THREE.WebGLRenderer()
     renderer.setSize(window.innerWidth, window.innerHeight)
-    canvas.appendChild(renderer.domElement)
+    parent.appendChild(renderer.domElement)
     
     // https://threejs.org/docs/#examples/en/controls/ArcballControls
     // https://threejs.org/docs/#examples/en/controls/OrbitControls
@@ -51,5 +54,16 @@ export function setupThree(canvas: HTMLCanvasElement) {
     }
 
     animate()
+
+    window.addEventListener(
+        'resize',
+        () => {
+            camera.aspect = window.innerWidth / window.innerHeight
+            camera.updateProjectionMatrix()
+            renderer.setSize(window.innerWidth, window.innerHeight)
+            render()
+        },
+        false
+    );
 }
   
