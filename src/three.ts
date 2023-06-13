@@ -26,7 +26,7 @@ export function setupThree(parent: HTMLElement) {
 
     const geometry = new THREE.BoxGeometry()
     const material = new THREE.MeshBasicMaterial({
-        color: 0xffff00,
+        color: 0xffffff,
         wireframe: true
     })
 
